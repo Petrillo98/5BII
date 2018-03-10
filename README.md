@@ -1,5 +1,5 @@
-# 5BII
-Orienteering
+#Orienteering
+
 Seguire i passaggi per caricare i file su GitHub :
 1)Cliccare su "Create new file"
 2)Dare il nome alla cartella "LavoroNomealunno"/"Filevuoto" e cliccare infondo alla pagina "Commit directly to the master branch."
