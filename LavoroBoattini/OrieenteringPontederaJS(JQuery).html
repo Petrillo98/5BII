@@ -18,7 +18,7 @@
     map.setTilt(50);
     // Aggiunta marker ricavati dal file xml
     var infoWindow = new google.maps.InfoWindow(), marker, i;
-    var filename = 'xmlor.xml';
+    var filename = 'orienteering.xml';
     jQuery.get(filename, function(xml){
         jQuery(xml).find("marker").each(function(){ 
             console.log(jQuery(this));
