@@ -1,0 +1,12 @@
+<?
+  	$resource = mysql_connect ('localhost','orienteeringpontedera','');
+  	mysql_select_db('my_orienteeringpontedera',$resource);
+  
+ 	 $result = mysql_query('Select * From persone');
+     echo "<table><tr><th>ID</th><th>Latitudine</th><th>Longitudine</th><th>Nome</th><th>Cognome</th></tr>";
+  	 while($row = mysql_fetch_assoc($result)) {
+  		echo "<tr><td>".$row["id"]."</td><td>".$row["latitudine"]."</td><td> ".$row["longitudine"]."</td><td>".$row["nome"]."</td><td>".$row["cognome"]."</td></tr>";}
+  echo "</table>";
+  
+  
+  ?>
