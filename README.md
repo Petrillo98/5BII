@@ -5,3 +5,5 @@
 2)Dare il nome alla cartella "LavoroNomealunno"/"Filevuoto" e cliccare infondo alla pagina "Commit directly to the master branch."
 
 3)Entrare nella propria cartella "LavoroNomealunno" e inserire il materiale da consegnare allo stesso modo di prima (il materiale deve essere consegnato tutto nella stessa cartella di prima).
+
+4)Eliminare il file vuoto ("vuota") nella propria cartella, solo dopo aver caricato i propri files.
