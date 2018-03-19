@@ -6,22 +6,26 @@
   $server = $dom->appendChild($orienteering);
   
   $name = $dom->appendChild($server);
+  $name->setAttribute('nome','localhost');
   $version = $dom->appendChild($server);
+  $version->setAttribute('versione','1');
   $user = $dom->appendChild($orienteering);
   $markers = $dom->appendChild($user);
-  $result = mysqli_query($conn,"SELECT id, CONCAT(nome,' ', cognome) as name, indirizzo as address, latitudine as lat, longitudine as lng, posizione as type FROM persone");
-  $user = $dom->setAttribute('generated',$date);
+  
+
+  $result = mysqli_query($conn,"SELECT id, CONCAT(nome,' ', cognome) as nome, indirizzo, latitudine, longitudine, posizione FROM persone");
+  $user->setAttribute('generated','$date');
   $resdate=mysqli_query($conn,"SELECT DATE_FORMAT(NOW(), '%Y-%m-%dT%T') as data1");
   $data = mysqli_fetch_array($resdate);
   $date=$data[0];
   while($row = mysqli_fetch_assoc($result)){
     $marker = $dom->appendChild($user);
     foreach ($row as $key => $value) {
-      $marker = $dom->setAttribute($key, $value);
+      $marker->setAttribute($key, $value);
     }
   }
+  $dom->save('OrienteeringVeracini.xml');
   
+  mysqli_close($conn);
 
-    mysqli_close($conn);
-
-?> 
+?>
