@@ -1,0 +1,43 @@
+<?php
+//Creazione nuovo documento
+  $dom = new DomDocument("1.0", "UTF-8");
+//Connessione alla tabella
+  $conn = mysqli_connect("localhost","root","","my_orienteeringpontedera");
+//Creazione vari elementi presenti nel nuovo file XML
+  $orienteering = $dom->createElement('Orienteering');
+  $server = $dom->createElement('Server');
+  $nome = $dom->createElement('Nome', 'localhost');
+  $versione = $dom->createElement('Versione', '1');
+  $marker = $dom->createElement('Marker');
+//Creazione dipendenze 
+  $orienteering->appendChild($server);
+  $server->appendChild($nome);
+  $server->appendChild($versione);
+  $orienteering->appendChild($user);
+  $user->appendChild($marker);
+//Ottenimento dei dati dalla tabella e collocamento nella struttura  
+  $result = mysqli_query($conn,"SELECT id, CONCAT(nome,' ', cognome) as nome, indirizzo, latitudine, longitudine, posizione FROM persone");
+  while($row = mysqli_fetch_assoc($result)){
+    $marker = $dom->createElement('Marker');
+    $user->appendChild($marker);
+    foreach ($row as $key => $value) {
+      $marker->setAttribute($key, $value);
+    }
+  }
+//Creazione del file XML con tutta la struttura precedentemente definita  
+  $dom->save('OrienteeringVeracini.xml');
+//Prova (mal riuscita) di validazione file XML
+/*
+  $xml->load('indirizzo file xml');
+ 
+  if (!$xml->schemaValidate('indirizo file xsd')) { 
+     echo "invalid<p/>";
+  } 
+   else { 
+      echo "validated<p/>"; 
+   } 
+*/
+//Chiusura della connessione alla tabella
+  mysqli_close($conn);
+
+?>
