@@ -3,11 +3,12 @@
   $conn = mysqli_connect("localhost","root","","my_orienteeringpontedera");
   $orienteering = $dom->createElement('Orienteering');
   $server = $dom->createElement('Server');
-  $server->appendChild( $dom->createElement('Nome', 'localhost') );
-  $server->appendChild( $dom->createElement('Versione', '1') );
-  $user = $dom->createElement('Utente');
+  $nome = $dom->createElement('Nome', 'localhost');
+  $versione = $dom->createElement('Versione', '1');
   $marker = $dom->createElement('Marker'); 
   $orienteering->appendChild($server);
+  $server->appendChild($nome);
+  $server->appendChild($versione);
   $orienteering->appendChild($user);
   $user->appendChild($marker);
   $result = mysqli_query($conn,"SELECT id, CONCAT(nome,' ', cognome) as nome, indirizzo, latitudine, longitudine, posizione FROM persone");
